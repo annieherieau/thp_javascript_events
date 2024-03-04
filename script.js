@@ -115,26 +115,23 @@ function ChangeDisplay() {
       case "a":
         // 4 colonnes / start
         ChangeClassName(div_cards, "col-md-3");
-        container.style.marginLeft = "0px";
+        changeMargin(container, 'left');
         break;
       case "y":
         // 4 colonnes / center
         ChangeClassName(div_cards, "col-md-3");
-        container.style.marginLeft = "auto";
-        container.style.marginRight = "auto";
+        changeMargin(container);
         break;
 
       case "p":
         // 4 colonnes / end
         ChangeClassName(div_cards, "col-md-3");
-        container.style.marginLeft = "auto";
-        container.style.marginRight = "0px";
+        changeMargin(container, 'right');
         break;
       case "b":
         // 3 colonnes / center
         ChangeClassName(div_cards, "col-md-4");
-        container.style.marginLeft = "auto";
-        container.style.marginRight = "auto";
+        changeMargin(container);
         break;
       default:
         break;
@@ -146,5 +143,23 @@ function ChangeDisplay() {
 function ChangeClassName(HTMLcollection, class_name) {
   for (let card of HTMLcollection) {
     card.className = class_name;
+  }
+}
+
+function changeMargin(element, margin = "auto") {
+  switch (margin) {
+    case "left":
+      element.style.marginLeft = "0px";
+      break;
+
+    case "right":
+      container.style.marginLeft = "auto";
+      container.style.marginRight = "0px";
+      break;
+
+    default:
+      element.style.marginLeft = "auto";
+      element.style.marginRight = "auto";
+      break;
   }
 }
