@@ -103,19 +103,26 @@ function MoveFirstCard() {
 // Fonctionnalité 9:
 // selection du logo
 let logo = document.querySelector(".navbar-brand");
-logo.addEventListener("mouseover", ChangeDisplay);
 let container = album.parentNode;
+logo.addEventListener("mouseup", () => {
+  let selection = document.getSelection();
+  console.log(selection.toString() );
+  if (selection.toString() === "JS & Events") {
+    ChangeDisplay();
+  }
+});
+
 // container.classList.add("justify-content-center");
 // Touche clavier
 
 function ChangeDisplay() {
-  document.addEventListener("keydown", (event) => {
+  this.addEventListener("keydown", (event) => {
     let container_class = container.classList[1];
     switch (event.key) {
       case "a":
         // 4 colonnes / start
         ChangeClassName(div_cards, "col-md-3");
-        changeMargin(container, 'left');
+        changeMargin(container, "left");
         break;
       case "y":
         // 4 colonnes / center
@@ -126,7 +133,7 @@ function ChangeDisplay() {
       case "p":
         // 4 colonnes / end
         ChangeClassName(div_cards, "col-md-3");
-        changeMargin(container, 'right');
+        changeMargin(container, "right");
         break;
       case "b":
         // 3 colonnes / center
